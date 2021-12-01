@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import SearchResult from './components/video/SearchResult';
+import VideoPlayer from './components/video/VideoPlayer';
+import VideoQueue from './components/video/VideoQueue';
+import VideoState from './context/video/video.state';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <VideoState>
+      <div className='container'>
+        <Navbar />
+        {/* todo: search result and player might need to be just placed in a normal div and not inside  grid item*/}
+        <div className='search-result'>
+          <SearchResult />
+          <VideoPlayer />
+        </div>
+        <div className='player'></div>
+
+        <div className='queue'>
+          <VideoQueue />
+        </div>
+      </div>
+    </VideoState>
   );
-}
+};
 
 export default App;
